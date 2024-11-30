@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, OrdinalEncoder
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
+import joblib
 
 data_raw = pd.read_csv('Data/drug.csv')
 
@@ -29,8 +30,9 @@ print('Accuracy:', accuracy_score(y_test, y_pred))
 with open("./Results/metrics.txt", "w") as f:
     f.write(str(accuracy_score(y_test, y_pred)))
 
-import pickle
+
 with open('./Model/model.pkl', 'wb') as f:
-    pickle.dump(model, f)
+    joblib.dump(model, './Model/model.pkl')
+    joblib.dump(encoder, './Model/encoder.pkl')
 
 
