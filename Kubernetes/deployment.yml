@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drug-app
+  labels:
+    app: drug-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: drug-app
+  template:
+    metadata:
+      labels:
+        app: drug-app
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: drug-app
+        image: qkhanh09/drug-prediction:latest  
+        imagePullPolicy: "Always"
+        ports:
+        - containerPort: 8000
