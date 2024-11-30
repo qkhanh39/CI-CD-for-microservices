@@ -7,6 +7,7 @@ resource "aws_instance" "web" {
   tags = {
     Name = "MicroInstance"
   }
+  
 }
 
 resource "aws_key_pair" "key_pair_for_web_instance" {
