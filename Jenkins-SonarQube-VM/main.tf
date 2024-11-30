@@ -14,6 +14,7 @@ resource "aws_key_pair" "key_pair_for_web_instance" {
   public_key = file("my_key_pair.pem.pub")
 }
 
+
 resource "aws_security_group" "Jenkins-VM-SG" {
   name        = "Jenkins-VM-SG"
   description = "Allow TLS inbound traffic"
