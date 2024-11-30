@@ -9,6 +9,7 @@ resource "aws_instance" "web" {
   }
 }
 
+
 resource "aws_key_pair" "key_pair_for_web_instance" {
   key_name = "my_key_pair"
   public_key = file("my_key_pair.pem.pub")
