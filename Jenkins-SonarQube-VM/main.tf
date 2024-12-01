@@ -7,7 +7,9 @@ resource "aws_instance" "web" {
   tags = {
     Name = "MicroInstance"
   }
-  
+  root_block_device {
+    volume_size = 40
+  }
 }
 
 resource "aws_key_pair" "key_pair_for_web_instance" {
