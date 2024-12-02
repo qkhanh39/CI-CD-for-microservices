@@ -13,7 +13,6 @@ def predict(data: dict):
     feature = np.array([list(data.values())])
     model = joblib.load('./Model/model.pkl')
     encoder = joblib.load('./Model/encoder.pkl')
-    feature[:, [1, 2, 3]] = encoder.transform(feature[:, [1, 2, 3]])
+    feature[[1, 2, 3]] = encoder.transform(feature[1, 2, 3].reshape(1, -1))
     prediction = model.predict(feature)
-    prediction = encoder.inverse_transform(prediction)
     return {"prediction": prediction[0]}

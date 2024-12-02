@@ -15,14 +15,15 @@ y = data_raw.Drug.values
 columns_to_encode = [1, 2, 3]
 
 encoder = OrdinalEncoder()
-X[:, columns_to_encode] = encoder.fit_transform(X[:, columns_to_encode])
-y = encoder.fit_transform(y.reshape(-1, 1)).reshape(-1)
+
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train[: , columns_to_encode] = encoder.fit_transform(X_train[:, columns_to_encode])
 
 model = RandomForestClassifier(n_estimators=3, random_state=42)
 model.fit(X_train, y_train)
 
+X_test[:, columns_to_encode] = encoder.transform(X_test[:, columns_to_encode])
 y_pred = model.predict(X_test)
 
 print('Accuracy:', accuracy_score(y_test, y_pred))
